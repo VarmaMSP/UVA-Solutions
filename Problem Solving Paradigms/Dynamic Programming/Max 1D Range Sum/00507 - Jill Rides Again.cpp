@@ -1,5 +1,4 @@
 #include <cstdio>
-#include <algorithm>
 
 int main() {
     int tt, s, niceness, route = 1;
