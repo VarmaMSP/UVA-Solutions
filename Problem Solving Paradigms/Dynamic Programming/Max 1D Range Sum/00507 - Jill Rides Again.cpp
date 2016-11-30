@@ -37,4 +37,4 @@ int main() {
 }
 
 //Date: 30 Nov, 2016
-//Author: Bumpy -_-
+//Author: bumpy -_-
