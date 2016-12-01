@@ -18,7 +18,7 @@ int main() {
             event[tmp] = i;
         }
         for (int i = 1; i <= n; ++i) {
-            int tmp = 0;
+            tmp = 0;
             for (int j = 1; j < i; ++j) {
                 if (order[event[j]] < order[event[i]] && LIS[j] > tmp)
                     tmp = LIS[j];
@@ -30,5 +30,7 @@ int main() {
     return 0;
 }
 
-//Date: 1 Dec, 2016
-//Author: bumpy -_-
+/*
+Author : bumpy (-_-)
+date : 1-Dec-2016
+*/

@@ -44,5 +44,7 @@ int main() {
     return 0;
 }
 
-//Date: 1 Dec 2016
-//Author: bumpy -_-
+/*
+Author : bumpy (-_-)
+date : 1-Dec-2016
+*/

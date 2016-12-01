@@ -21,5 +21,7 @@ int main() {
     }
 }
 
-//Date: 30 Nov, 2016
-//Author: bumpy -_-
+/*
+Author : bumpy (-_-)
+date : 30-Nov-2016
+*/
