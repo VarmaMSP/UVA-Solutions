@@ -10,7 +10,7 @@ int main(){
         int cnt = 0;
         for(int y = k + 1; y <= 2*k; ++y){
             if((k*y) % (y-k) == 0){
-                res.push_back(make_pair((k*y)/(y-k), y));
+                res.push_back({(k*y)/(y-k), y});
                 ++cnt;
             }
         }

@@ -12,7 +12,7 @@ int main(){
         cin >> d;
         for(int i = 0; i < d; ++i){
             cin >> m >> l >> h;
-            D.push_back(make_pair(m, make_pair(l, h)));
+            D.push_back({m, {l, h}});
         }
         cin >> q;
         while(q--){
@@ -27,9 +27,10 @@ int main(){
             if(cnt == 1)
                 cout << D[id].first << endl;
             else
-                cout << "UNDETERMINED\n";
+                cout << "UNDETERMINED" << endl;
         }
-        if(tt) cout << endl;
+        if(tt)
+            cout << endl;
         D.clear();
     }
     return 0;
