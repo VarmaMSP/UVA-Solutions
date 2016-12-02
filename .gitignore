@@ -72,6 +72,9 @@ Temporary Items
 *.lai
 *.la
 *.a
+
+#text files
+*.txt
 *.lib
 
 # Executables
