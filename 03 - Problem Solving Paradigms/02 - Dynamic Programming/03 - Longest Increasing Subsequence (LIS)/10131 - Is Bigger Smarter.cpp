@@ -45,3 +45,8 @@ int main() {
     printLIS(prev, pos);
     return 0;
 }
+
+/*
+Author: bumpy (-_-)
+date: 3-Dec-2016
+*/

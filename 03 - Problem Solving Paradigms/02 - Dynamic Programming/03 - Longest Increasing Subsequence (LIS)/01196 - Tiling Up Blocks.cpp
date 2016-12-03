@@ -29,6 +29,6 @@ int main() {
 }
 
 /*
-Author : bumpy (-_-)
-date : 2-12-2016
+Author: bumpy (-_-)
+date: 2-12-2016
 */
