@@ -4,9 +4,10 @@ using namespace std;
 
 vector<int> A;
 
-void printLIS(vector<int> &LIS, vector<int> &prev, int pos) {
-    if (LIS[pos] != 1)
-        printLIS(LIS, prev, prev[pos]);
+void printLIS(vector<int> &prev, int pos) {
+    if (prev[pos] != -1) {
+        printLIS(prev, prev[pos]);
+    }
     cout << A[pos] << endl;
 }
 
@@ -16,7 +17,7 @@ int main() {
     cin.ignore();
     cin.ignore();
     while (tt--) {
-        int tmp;
+        int tmp, pre;
         string s;
         while (getline(cin, s) && s != "") {
             stringstream ss(s);
@@ -27,18 +28,19 @@ int main() {
         vector<int> LIS(n);
         vector<int> prev(n);
         for (int i = 0; i < n; ++i) {
-            tmp = 0;
+            tmp = 0, pre = -1;
             for (int j = 0; j < i; ++j) {
                 if (A[j] < A[i] && LIS[j] > tmp) {
                     tmp = LIS[j];
-                    prev[i] = j;
+                    pre = j;
                 }
             }
             LIS[i] = 1 + tmp;
+            prev[i] = pre;
         }
         int pos = distance(LIS.begin(), max_element(LIS.begin(), LIS.end()));
         cout << "Max hits: " << LIS[pos] << endl;
-        printLIS(LIS, prev, pos);
+        printLIS(prev, pos);
         if (tt)
             cout << endl;
         A.clear();
