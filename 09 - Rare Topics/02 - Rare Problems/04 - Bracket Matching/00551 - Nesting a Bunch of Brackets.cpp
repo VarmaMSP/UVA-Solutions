@@ -43,10 +43,8 @@ int main() {
             }
             if (isValidOpenBracket(tmp)) {
                 S.push(tmp);
-                continue;
             }
-            if (isValidClosedBracket(tmp)) {
-                pos = cnt + 1;
+            else if (isValidClosedBracket(tmp)) {
                 if (!S.empty() && bracketMatch[S.top()] == tmp) {
                     S.pop();
                 } else {
@@ -57,12 +55,11 @@ int main() {
         }
         if (isBalanced && !S.empty()) {
             isBalanced = false;
-            pos = cnt + 1;
         }
         if (isBalanced)
             printf("YES\n");
         else
-            printf("NO %d\n", pos);
+            printf("NO %d\n", cnt + 1);
     }
     return 0;
 }
