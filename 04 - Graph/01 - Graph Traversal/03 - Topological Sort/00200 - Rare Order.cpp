@@ -1,5 +1,4 @@
 #include <bits/stdc++.h>
-#define tr(c, it) for(typeof((c).begin()) it = (c).begin(); it != (c).end(); ++it)
 
 using namespace std;
 
