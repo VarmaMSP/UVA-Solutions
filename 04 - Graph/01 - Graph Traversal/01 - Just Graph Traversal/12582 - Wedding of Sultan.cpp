@@ -4,21 +4,18 @@ using namespace std;
 
 int degree[26];
 
-int main(){
+int main() {
     int tt, k = 1;
     cin >> tt;
     string str;
-    while(tt--){
+    while (tt--) {
         cin >> str;
-        stack<char> S;
-        for(int i = 0; i < str.size(); ++i){
-            if(S.empty()){
-                S.push(str[i]);
-                continue;
-            }
-            if(S.top() == str[i]){
+        stack <char> S;
+        S.push(str[0]);
+        for (int i = 1; i < str.size(); ++i) {
+            if (S.top() == str[i]) {
                 S.pop();
-                if(!S.empty()){
+                if (!S.empty()) {
                     degree[str[i]  - 'A']++;
                     degree[S.top() - 'A']++;
                 }
@@ -27,8 +24,11 @@ int main(){
             }
         }
         printf("Case %d\n", k++);
-        for(int i = 0; i < 26; ++i) if(degree[i] > 0)
-            printf("%c = %d\n", (char)('A' + i), degree[i]);
+        for (int i = 0; i < 26; ++i) {
+            if(degree[i] > 0) {
+                printf("%c = %d\n", (char)('A' + i), degree[i]);
+            }
+        }
         memset(degree, 0, sizeof(degree));
     }
     return 0;
