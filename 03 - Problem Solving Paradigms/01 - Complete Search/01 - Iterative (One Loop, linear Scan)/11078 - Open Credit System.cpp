@@ -2,13 +2,13 @@
 
 using namespace std;
 
-int main(){
+int main() {
     int tt, n, snr, jnr;
     scanf("%d", &tt);
-    while(tt--){
+    while (tt--) {
         scanf("%d %d", &n, &snr); --n;
         int diff = INT_MIN;
-        while(n--){
+        while (n--) {
             scanf("%d", &jnr);
             diff = max(diff, snr - jnr);
             snr  = max(snr, jnr);
@@ -19,6 +19,6 @@ int main(){
 }
 
 /*
-Author : bumpy (-_-)
-date : 10-Jul-2016
+Author: bumpy (-_-)
+date: 10-Jul-2016
 */
