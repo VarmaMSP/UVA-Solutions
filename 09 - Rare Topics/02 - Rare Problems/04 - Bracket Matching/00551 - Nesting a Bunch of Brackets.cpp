@@ -28,7 +28,6 @@ int main() {
     while (gets(str)) {
         stack< char > S;
         int len = strlen(str);
-        int pos = -1;
         int cnt = 0;
         bool isBalanced = true;
         for (int i = 0; i < len; ++i, ++cnt) {
