@@ -5,13 +5,13 @@ using namespace std;
 int G[110][110], n;
 bool canReach[110], visit[110], res[110][110];
 
-void DFS (int u, int skip) {
-    if(u == skip)
+void DFS (int u, int stop) {
+    if(u == stop)
         return;
     visit[u] = true;
     for (int v = 0; v < n; ++v) {
         if (G[u][v] && !visit[v]) {
-            DFS(v, skip);
+            DFS(v, stop);
         }
     }
 }
@@ -38,17 +38,12 @@ int main() {
         for (int u = 0; u < n; ++u) {
             canReach[u] = visit[u];
         }
-        for (int u = 0; u < n; ++u) {
-            for (int v = 0; v < n; ++v) {
-                res[u][v] = false;
-            }
-        }
         for (int v = 0; v < n; ++v) {
             if (canReach[v]) {
                 memset(visit, false, sizeof(visit));
                 DFS(0, v);
                 for (int u = 0; u < n; ++u) {
-                    if (canReach[u] && !visit[u]) //v dominates u
+                    if (canReach[u] && !visit[u]) // v dominates u
                         res[v][u] = true;
                 }
             }
