@@ -19,13 +19,13 @@ int main() {
     char str[100];
     int x, y;
     while (gets(str)) {
-        y = -1;
+        x = -1;
         for (int i = 0; i < strlen(str); ++i) {
-            x = id[str[i]];
-            if (x != 0 && x != y) {
-                printf("%d", x);
+            y = id[str[i]];
+            if (y != 0 && y != x) {
+                printf("%d", y);
             }
-            y = x;
+            x = y;
         }
         printf("\n");
     }
