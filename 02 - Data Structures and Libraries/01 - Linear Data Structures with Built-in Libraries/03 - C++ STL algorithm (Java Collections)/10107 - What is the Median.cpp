@@ -3,7 +3,7 @@
 using namespace std;
 
 int main() {
-    int x, l = 0;
+    int x, median, l = 0;
     vector< int > a;
     while (scanf("%d", &x) != EOF) {
         ++l;
@@ -16,12 +16,17 @@ int main() {
         }
         a[j + 1] = x;
 
-        int median = a[l/2];
+        median = a[l/2];
         if (l % 2 == 0) {
-            median += a[l/2 + 1];
+            median += a[l/2 - 1];
             median /= 2;
         }
         printf("%d\n", median); 
     }
     return 0;
 }
+
+/*
+Author: bumpy(-_-)
+date: 30-Dec-2016
+*/
