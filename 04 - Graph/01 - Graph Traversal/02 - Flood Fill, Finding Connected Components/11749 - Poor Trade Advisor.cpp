@@ -22,7 +22,7 @@ int bfs(int U, int maxPPA) {
             }
         }
     }
-    return count > 1 ? count : 0;
+    return count;
 }
 
 int main() {
