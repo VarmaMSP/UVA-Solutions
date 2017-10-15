@@ -5,17 +5,24 @@ using namespace std;
 vector< pair< int, int > > G[550];
 bool visit[550];
 
-void dfs(int u, int maxPPA, set<int> &cities) {
-    visit[u] = true;
-    for (auto &x: G[u]) {
-        int v   = x.second;
-        int ppa = x.first;
-        if (!visit[v] && ppa == maxPPA) {
-            dfs(v, maxPPA, cities);
-            cities.insert(u);
-            cities.insert(v);
+int bfs(int U, int maxPPA) {
+    queue<int> Q;
+    int count = 0;
+    Q.push(U);
+    visit[U] = true;
+    while (!Q.empty()) {
+        count += 1;
+        int u = Q.front(); Q.pop();
+        for (auto &x: G[u]) {
+            int v = x.first;
+            int ppa = x.second;
+            if (!visit[v] && ppa == maxPPA) {
+                Q.push(v);
+                visit[v] = true;
+            }
         }
     }
+    return count > 1 ? count : 0;
 }
 
 int main() {
@@ -24,8 +31,8 @@ int main() {
         int u, v, ppa, maxPPA = INT_MIN;
         for (int i = 0; i < m; ++i) {
             scanf("%d %d %d", &u, &v, &ppa);
-            G[u].push_back({ppa, v});
-            G[v].push_back({ppa, u});
+            G[u].push_back({v, ppa});
+            G[v].push_back({u, ppa});
             maxPPA = max(maxPPA, ppa);
         }
 
@@ -33,9 +40,7 @@ int main() {
         int maxCount = -1;
         for (int i = 1; i < n; ++i) {
             if (!visit[i]) {
-                set<int> cities;
-                dfs(i, maxPPA, cities);
-                maxCount = max(maxCount, (int)cities.size());
+                maxCount = max(maxCount, bfs(i, maxPPA));
             }
         }
         printf("%d\n", maxCount);
