@@ -24,11 +24,7 @@ int main() {
         if (1422 - y > 100) {
             isPoss = false;
         }
-
-        if (isPoss)
-            puts("POSSIBLE");
-        else
-            puts("IMPOSSIBLE");
+        puts(isPoss ? "POSSIBLE" : "IMPOSSIBLE");
     }
     return 0;
 }

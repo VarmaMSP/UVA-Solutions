@@ -6,8 +6,9 @@ int G[110][110], n;
 bool canReach[110], visit[110], res[110][110];
 
 void DFS (int u, int stop) {
-    if(u == stop)
-        return;
+    if(u == stop) {
+      return;
+    }
     visit[u] = true;
     for (int v = 0; v < n; ++v) {
         if (G[u][v] && !visit[v]) {

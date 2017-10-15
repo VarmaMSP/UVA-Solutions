@@ -31,10 +31,7 @@ int main() {
         }
 
         printf ("Test #%d: ", k++);
-        if (isSymmetric)
-            printf("Symmetric.\n");
-        else
-            printf("Non-symmetric.\n");
+        printf (isSymmetric ? "Symmetric.\n" : "Non-symmetric.\n");
     }
     return 0;
 }

@@ -60,8 +60,9 @@ int main() {
         sort(die.begin(), die.end());
         printf("Throw %d\n", kk++);
         for (int i = 0; i < die.size(); ++i) {
-            if (i)
+            if (i > 0) {
                 printf(" ");
+            }
             printf("%d", die[i]);
         }
         printf("\n\n");

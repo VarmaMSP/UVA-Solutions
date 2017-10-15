@@ -8,9 +8,10 @@ vector<pii> G[510];
 int n, Time[510];
 
 void Dijkstra(int s) {
-    for (int u = 1; u <= n; ++u)
+    for (int u = 1; u <= n; ++u) {
         Time[u] = INT_MAX;
-    priority_queue < pii, vector<pii>, greater<pii> > Q;
+    }
+    priority_queue< pii, vector<pii>, greater<pii> > Q;
     Time[s] = 0;
     Q.push({0, s});
     while (!Q.empty()) {
@@ -57,8 +58,9 @@ int main() {
         } else {
             printf("The last domino falls after %.1f seconds, between key dominoes %d and %d.\n\n", T, x, y);
         }
-        for(int i = 1; i <= n; ++i)
+        for(int i = 1; i <= n; ++i) {
             G[i].clear();
+        }
         memset(Time, 0, sizeof(Time));
     }
     return 0;

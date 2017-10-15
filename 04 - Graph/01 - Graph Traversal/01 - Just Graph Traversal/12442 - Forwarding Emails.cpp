@@ -7,9 +7,9 @@ bool visit[50005], inStack[50005];
 
 int DFS(int u) {
     visit[u] = true;
+    inStack[u] = true;
     int cnt = 0;
     int v = G[u];
-    inStack[u] = true;
     if (!inStack[v]) {
         cnt += DFS(v);
     }

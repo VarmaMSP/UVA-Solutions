@@ -37,8 +37,9 @@ int main() {
             printf("\n");
             memset(visit, false, sizeof(visit));
         }
-        for (int i = 1; i <= n; ++i)
+        for (int i = 1; i <= n; ++i) {
             G[i].clear();
+        }
     }
     return 0;
 }

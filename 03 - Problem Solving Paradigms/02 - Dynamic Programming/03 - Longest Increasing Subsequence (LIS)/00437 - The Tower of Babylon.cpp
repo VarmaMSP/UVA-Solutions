@@ -14,7 +14,7 @@ struct block {
 };
 
 int height[110];
-vector < block > A;
+vector< block > A;
 
 int main() {
     int n, x, y, z, c = 1;

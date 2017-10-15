@@ -2,7 +2,7 @@
 
 using namespace std;
 
-vector < pair <string, pair<int, int> > > D;
+vector< pair< string, pair< int, int > > > D;
 
 int main() {
     int tt, d, l, h, q, p;
@@ -40,4 +40,3 @@ int main() {
 Author: bumpy (-_-)
 date: 10-Jul-2016
 */
-

@@ -60,8 +60,9 @@ int main() {
             }
         }
         printf("%d %d %c", x, y, dir);
-        if (fell)
+        if (fell) {
             printf(" LOST");
+        }
         printf("\n");
     }
     return 0;

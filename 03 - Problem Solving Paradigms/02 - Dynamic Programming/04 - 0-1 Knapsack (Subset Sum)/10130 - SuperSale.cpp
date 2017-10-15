@@ -12,10 +12,12 @@ void solve(int S) {
         dp[0][s] = 0;
     for (int i = 1; i <= n; ++i) {
         for (int s = 1; s <= S; ++s) {
-            if (w[i] > s)
-                dp[i][s] = dp[i - 1][s];
-            else
-                dp[i][s] = max(dp[i - 1][s], p[i] + dp[i - 1][s - w[i]]);
+            if (w[i] > s) {
+              dp[i][s] = dp[i - 1][s];
+            }
+            else {
+              dp[i][s] = max(dp[i - 1][s], p[i] + dp[i - 1][s - w[i]]);
+            }
         }
     }
 }

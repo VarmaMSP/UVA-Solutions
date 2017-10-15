@@ -9,8 +9,9 @@ inline int toInt(char a) {
 }
 
 int find_set(int x) {
-    if (p[x] != x)
+    if (p[x] != x) {
         p[x] = find_set(p[x]);
+    }
     return p[x];
 }
 
@@ -20,8 +21,9 @@ int main() {
     scanf("%d\n\n", &tt);
     while (tt--) {
         sscanf(gets(str), "%c", &n);
-        for(int i = 0; i <= toInt(n); ++i)
+        for(int i = 0; i <= toInt(n); ++i) {
             p[i] = i;
+        }
         while (gets(str) && str[0]) {
             int x = find_set(toInt(str[0]));
             int y = find_set(toInt(str[1]));
@@ -35,8 +37,9 @@ int main() {
             }
         }
         printf("%d\n", cnt);
-        if (tt)
+        if (tt) {
             printf("\n");
+        }
     }
     return 0;
 }

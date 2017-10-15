@@ -2,7 +2,7 @@
 
 using namespace std;
 
-pair <int, int> A[10100];
+pair< int, int > A[10100];
 int LIS[10100];
 
 int main() {

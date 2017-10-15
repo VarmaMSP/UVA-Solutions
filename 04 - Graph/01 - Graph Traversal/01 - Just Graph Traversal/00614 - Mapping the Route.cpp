@@ -67,31 +67,26 @@ void printAns() {
         printf("|");
         for (int j = 0; j < n - 1; ++j) {
             printDepth(i, j);
-            if (hasWall(i, j, 'E'))
-                printf("|");
-            else
-                printf(" ");
+            printf(hasWall(i, j, 'E') ? "|" : " ");
         }
         printDepth(i, n-1);
         printf("|\n+");
         if (i == m - 1)
             continue;
         for (int j = 0; j < n; ++j) {
-            if (hasWall(i, j, 'S'))
-                printf("---+");
-            else
-                printf("   +");
+            printf(hasWall(i, j, 'S') ? "---+" : "   +");
         }
         printf("\n");
     }
-    for (int i = 0; i < n; ++i)
+    for (int i = 0; i < n; ++i) {
         printf("---+");
+    }
     printf("\n\n\n");
 }
 
 int main() {
     int x, y, kk = 1;
-    while (scanf("%d %d %d %d %d %d", &m, &n, &x, &y, &X, &Y) && (m|n|x|y|X|Y)) {
+    while (scanf("%d %d %d %d %d %d", &m, &n, &x, &y, &X, &Y) && (m | n | x | y | X | Y)) {
         --x, --y, --X, --Y;
         for (int i = 0; i < m; ++i) {
             for (int j = 0; j < n; ++j) {

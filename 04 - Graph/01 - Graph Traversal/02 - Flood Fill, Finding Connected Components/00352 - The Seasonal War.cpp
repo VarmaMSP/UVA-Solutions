@@ -21,8 +21,9 @@ void floodfill(int x, int y, char c1, char c2) {
 int main() {
     int kk = 1;
     while (scanf("%d", &n) != EOF) {
-        for (int i = 0; i < n; ++i)
+        for (int i = 0; i < n; ++i) {
             scanf("%s", &grid[i]);
+        }
         int cnt = 0;
         for (int i = 0; i < n; ++i) {
             for (int j = 0; j < n; ++j) {

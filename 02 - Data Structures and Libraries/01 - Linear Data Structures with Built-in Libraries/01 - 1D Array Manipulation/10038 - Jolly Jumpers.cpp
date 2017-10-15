@@ -20,10 +20,7 @@ int main() {
                 break;
             }
         }
-        if (isJolly)
-            printf("Jolly\n");
-        else
-            printf("Not jolly\n");
+        printf(isJolly ? "Jolly\n" : "Not jolly\n");
         memset(flag, false, sizeof(flag));
     }
     return 0;
