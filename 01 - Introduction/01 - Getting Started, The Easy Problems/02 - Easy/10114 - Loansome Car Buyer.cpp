@@ -13,9 +13,9 @@ int main() {
         double monthly_payment = loan / duration;
         double car_value = (loan + downpayment) * (1 - dep[0]);
         while (car_value < loan) {
-          time += 1;
-          loan -= monthly_payment;
-          car_value -= car_value * dep[time];
+            time += 1;
+            loan -= monthly_payment;
+            car_value -= car_value * dep[time];
         }
         printf("%d month", time);
         printf(time != 1 ? "s\n" : "\n");
