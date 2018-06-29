@@ -2,7 +2,7 @@
 
 int main() {
     int b, n, bank[21], d, c, v;
-    while (scanf("%d %d", &b, &n) && (b | n)) {
+    while (scanf("%d %d", &b, &n) && b && n) {
         for (int i = 1; i <= b; ++i) {
             scanf("%d", bank + i);
         }
