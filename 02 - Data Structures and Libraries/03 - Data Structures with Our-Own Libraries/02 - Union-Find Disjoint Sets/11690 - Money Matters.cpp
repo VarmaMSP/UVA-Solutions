@@ -25,7 +25,7 @@ int main() {
             int x = find_set(a);
             int y = find_set(b);
             if (x != y) {
-              p[y] = x;
+                p[y] = x;
             }
         }
         map< int, int > group;
