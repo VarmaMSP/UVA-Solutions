@@ -3,7 +3,7 @@
 using namespace std;
 
 int p[1000100];
-vector< pair< int, pair< int, int > > > edge;
+vector< tuple< int, int, int > > edge;
 
 int find_set(int x) {
     if (p[x] != x)
@@ -13,10 +13,10 @@ int find_set(int x) {
 
 int main() {
     int n, u, v, w, k, m;
-    bool isFirstLine = true;
+    bool firstLine = true;
     while (scanf("%d", &n) != EOF) {
-        for (int i = 0; i < n - 1; ++i) {
-            p[i + 1] = i + 1;
+        for (int i = 1; i <= n; ++i) {
+            p[i] = i;
         }
         int original = 0;
         for (int i = 0; i < n - 1; ++i) {
@@ -24,30 +24,28 @@ int main() {
             original += w;
         }
         scanf("%d", &k);
-        for (int i = 0; i < k; ++i) {
+        while (k--) {
             scanf("%d %d %d", &u, &v, &w);
-            edge.push_back({w, {u, v}});
+            edge.push_back({w, u, v});
         }
         scanf("%d", &m);
-        for (int i = 0; i < m; ++i) {
+        while (m--) {
             scanf("%d %d %d", &u, &v, &w);
-            edge.push_back({w, {u, v}});
+            edge.push_back({w, u, v});
         }
         sort(edge.begin(), edge.end());
         int res = 0;
         for (const auto& e: edge) {
-            int x = find_set(e.second.first);
-            int y = find_set(e.second.second);
+            int x = find_set(get<1>(e));
+            int y = find_set(get<2>(e));
             if (x != y) {
                 p[x] = y;
-                res += e.first;
+                res += get<0>(e);
             }
         }
-        if (!isFirstLine)
-            printf("\n");
-        else
-            isFirstLine = !isFirstLine;
+        if (!firstLine) printf("\n");
         printf("%d\n%d\n", original, res);
+        firstLine = false;
         edge.clear();
     }
     return 0;
