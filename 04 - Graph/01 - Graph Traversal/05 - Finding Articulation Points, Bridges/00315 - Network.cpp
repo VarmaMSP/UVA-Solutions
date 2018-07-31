@@ -17,8 +17,7 @@ void dfs(int u, int p) {
             dfs(v, u);
             low[u] = min(low[u], low[v]);
             if (low[v] >= num[u]) isArtPnt = true;
-        }
-        if (visit[v] && v != p) {
+        } else if (v != p) {
             low[u] = min(low[u], num[v]);
         }
     }
