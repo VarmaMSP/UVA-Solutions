@@ -24,9 +24,8 @@ int disjkra(int s, int des) {
                 Q.push({d[v], v});
             }
         }
-        if (u == des) return d[u];
     }
-    return -1;
+    return d[des];
 }
 
 int main() {
@@ -40,8 +39,8 @@ int main() {
             G[v].push_back({w, u});
         }
         int dis = disjkra(s, t);
-        if (dis == -1) printf("Case #%d: unreachable\n", c++);
-        if (dis != -1) printf("Case #%d: %d\n", c++, dis);
+        if (dis == INT_MAX) printf("Case #%d: unreachable\n", c++);
+        if (dis != INT_MAX) printf("Case #%d: %d\n", c++, dis);
         for (int i = 0; i < n; ++i) {
             G[i].clear();
         }

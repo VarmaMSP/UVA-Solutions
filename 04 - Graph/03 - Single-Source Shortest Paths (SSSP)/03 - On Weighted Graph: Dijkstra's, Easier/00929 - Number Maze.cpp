@@ -31,10 +31,8 @@ int disjkra() {
                 }
             }
         }
-        if (x == m - 1 && y == n - 1) {
-            return d[x][y];
-        }
     }
+    return d[m - 1][n - 1];
 }
 
 int main() {
