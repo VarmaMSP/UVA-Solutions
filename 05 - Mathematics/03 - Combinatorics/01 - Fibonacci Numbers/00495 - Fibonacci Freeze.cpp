@@ -10,7 +10,7 @@ string add(string const& p, string const& q) {
     int a, b, c = 0, d;
     int n = p.size() - 1;
     int m = q.size() - 1;
-    while (n >= 0|| m >= 0) {
+    while (n >= 0 || m >= 0) {
         a = n >= 0 ? p[n] - '0' : 0, n -= 1;
         b = m >= 0 ? q[m] - '0' : 0, m -= 1;
         d = a + b + c;
