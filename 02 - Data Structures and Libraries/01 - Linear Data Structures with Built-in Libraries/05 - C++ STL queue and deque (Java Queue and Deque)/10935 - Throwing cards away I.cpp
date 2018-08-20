@@ -9,16 +9,12 @@ int main() {
         for (int i = 1; i <= n; ++i) {
             Q.push(i);
         }
-
         printf("Discarded cards:");
         while (Q.size() > 1) {
             printf(" %d", Q.front()), Q.pop();
-
-            int x = Q.front(); Q.pop();
-            Q.push(x);
-            if (Q.size() > 1) {
-                printf(",");
-            }
+            Q.push(Q.front());
+            Q.pop();
+            if (Q.size() > 1) printf(",");
         }
         printf("\n");
         printf("Remaining card: %d\n", Q.front()), Q.pop();

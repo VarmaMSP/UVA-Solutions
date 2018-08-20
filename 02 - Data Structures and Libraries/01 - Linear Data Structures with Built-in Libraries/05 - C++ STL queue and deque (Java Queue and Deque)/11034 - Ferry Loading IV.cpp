@@ -9,7 +9,6 @@ int main() {
     while(tt--) {
         scanf("%d %d ", &l, &m);
         l *= 100;
-
         queue< int > bank[2];
         while (m--) {
             scanf("%d %s", &length, bankPos);
@@ -18,7 +17,6 @@ int main() {
             else
                 bank[1].push(length);
         }
-
         int cnt = 0, pos = 0;
         while (!(bank[0].empty() && bank[1].empty())) {
             int len = 0;
