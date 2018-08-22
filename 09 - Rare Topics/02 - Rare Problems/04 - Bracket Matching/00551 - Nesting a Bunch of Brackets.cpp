@@ -2,49 +2,38 @@
 
 using namespace std;
 
-map< char, char > bracketMatch;
-
-void init() {
-    bracketMatch['('] = ')';
-    bracketMatch['['] = ']';
-    bracketMatch['{'] = '}';
-    bracketMatch['<'] = '>';
-    bracketMatch['A'] = 'B'; //(* *)
+bool isOpen(char t) {
+    return t == '(' || t == '[' || t == '{' || t == '<' || t == 'A';
 }
 
-inline bool isValidOpenBracket(char t) {
-    return  t == '(' || t == '[' || t == '{' ||
-            t == '<' || t == 'A';
+bool isClose(char t) {
+    return t == ')' || t == ']' || t == '}' || t == '>' || t == 'B';
 }
 
-inline bool isValidClosedBracket(char t) {
-    return  t == ')' || t == ']' || t == '}' ||
-            t == '>' || t == 'B';
+bool match(char a, char b) {
+    if (a == '(' && b == ')') return true;
+    if (a == '[' && b == ']') return true;
+    if (a == '{' && b == '}') return true;
+    if (a == '<' && b == '>') return true;
+    if (a == 'A' && b == 'B') return true;
+    return false;
 }
 
 int main() {
-    init();
     char str[3050];
     while (gets(str)) {
         stack< char > S;
-        int len = strlen(str);
-        int cnt = 0;
+        int cnt = 0, len = strlen(str);
         bool isBalanced = true;
         for (int i = 0; i < len; ++i, ++cnt) {
             char tmp = str[i];
-            if (i < len - 1 && tmp == '(' && str[i + 1] == '*') {
-                tmp = 'A'; // (*
-                i += 1;
+            if (i + 1 < len) {
+                if (tmp == '(' && str[i + 1] == '*') tmp = 'A', i += 1;
+                if (tmp == '*' && str[i + 1] == ')') tmp = 'B', i += 1;
             }
-            if (i < len - 1 && tmp == '*' && str[i + 1] == ')') {
-                tmp = 'B'; // *)
-                i += 1;
-            }
-            if (isValidOpenBracket(tmp)) {
-                S.push(tmp);
-            }
-            else if (isValidClosedBracket(tmp)) {
-                if (!S.empty() && bracketMatch[S.top()] == tmp) {
+            if (isOpen(tmp)) S.push(tmp);
+            if (isClose(tmp)) {
+                if (!S.empty() && match(S.top(), tmp)) {
                     S.pop();
                 } else {
                     isBalanced = false;
@@ -52,13 +41,12 @@ int main() {
                 }
             }
         }
-        if (isBalanced && !S.empty()) {
-            isBalanced = false;
-        }
-        if (isBalanced)
+        if (!S.empty()) isBalanced = false;
+        if (isBalanced) {
             printf("YES\n");
-        else
+        } else {
             printf("NO %d\n", cnt + 1);
+        }
     }
     return 0;
 }

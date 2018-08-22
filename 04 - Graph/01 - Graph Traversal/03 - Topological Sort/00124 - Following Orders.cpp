@@ -2,69 +2,50 @@
 
 using namespace std;
 
+int cnt, indeg[26];
+char res[26];
+bool node[26];
 vector<int> G[26];
-bool node[26], visit[26];
-int inDeg[26], nodeCnt, res[26];
 
-inline void decInDeg(int i) {
-    for (auto j: G[i]) {
-        --inDeg[j];
-    }
-}
-
-inline void incInDeg(int i) {
-    for (auto j: G[i]) {
-        ++inDeg[j];
-    }
-}
-
-void printSort(int id) {
-    if (id == nodeCnt) { // solution found
-        for (int i = 0; i < nodeCnt; ++i) {
-            printf("%c", 'a' + res[i]);
+void topo(int id) {
+    if (id < cnt) {
+        for (int u = 0; u < 26; ++u) if (node[u] && indeg[u] == 0) {
+            for (auto v: G[u]) indeg[v] -= 1;
+            node[u] = false, res[id] = 'a' + u;
+            topo(id + 1);
+            for (auto v: G[u]) indeg[v] += 1;
+            node[u] = true;
         }
-        printf("\n");
-    } else {
-        for (int i = 0; i < 26; ++i) if(node[i] && !visit[i]) {
-            if (inDeg[i] == 0) {
-                res[id] = i;
-                visit[i] = true;
-                decInDeg(i);
-                printSort(id + 1);
-                incInDeg(i);
-                visit[i] = false;
-            }
-        }
+        return ;
     }
+    res[id] = '\0';
+    puts(res);
 }
 
 int main() {
-    bool firstInput = true;
-    string str;
     char u, v;
+    bool firstLine = true;
+    string str;
     while (getline(cin, str)) {
         istringstream nodes(str);
-        int i = 0;
-        nodeCnt = 0;
+        cnt = 0;
         while (nodes >> u) {
             node[u - 'a'] = true;
-            nodeCnt++;
+            cnt++;
         }
         getline(cin, str);
-        istringstream edges(str);
+        stringstream edges(str);
         while (edges >> u >> v) {
             G[u - 'a'].push_back(v - 'a');
-            ++inDeg[v - 'a'];
+            indeg[v - 'a'] += 1;
         }
-
-        printf(firstInput ? "" : "\n");
-        firstInput = false;
-        printSort(0);
-
-        for(int i = 0; i < 26; ++i)
+        if (!firstLine) printf("\n"); firstLine = false;
+        topo(0);
+        for(int i = 0; i < 26; ++i) {
             G[i].clear();
+        }
         memset(node, false, sizeof(node));
-        memset(inDeg, 0, sizeof(inDeg));
+        memset(indeg, 0, sizeof(indeg));
     }
     return 0;
 }
